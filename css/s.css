@@ -1,0 +1,46 @@
+table {
+	border-collapse:collapse;
+}
+
+div {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+input,select,button {
+    border-radius: 25px;
+}
+
+td {
+	border-width: 3px;
+}
+td.top{
+	border-color:#3f8c59;
+	border-bottom-style: solid;
+}
+
+td.left{
+	border-color:#3f8c59;
+	border-right-style: solid;
+}
+td.used {
+	border-color:#3f8c59;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style:solid;
+	border-right-style:solid;
+	text-align:center;
+	vertical-align:center;
+}
+
+img.mark{
+	width:22px;
+}
+
+span.hspace{
+    padding-left:22px;
+}
+
+span.vspace{
+    padding-bottom:22px;
+}
