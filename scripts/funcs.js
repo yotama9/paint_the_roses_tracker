@@ -68,7 +68,7 @@ function make_medium_table(player_id){
 		    cell = '<td></td>';
 		} else {
 		    cell = '<td>';
-		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', shapes[j]);
+		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', shapes[shapes.length - j]);
 		    cell += '</td>';
 		}
 	    }else if (j == -1){
