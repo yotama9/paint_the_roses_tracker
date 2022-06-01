@@ -116,7 +116,7 @@ function make_hard_table(player_id){
         //there is an empty row at the top of the table.
     var out = "<tbody>";
     var rows = colours.concat(shapes);
-    var columns = rows.reverse();
+    var columns = colours.concat(shapes).reverse();
     for (let i = -1; i < rows.length;i++){
 	out += "<tr>";
 	for (let j = -1; j < columns.length; j++){
