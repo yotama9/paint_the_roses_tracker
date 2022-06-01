@@ -32,7 +32,7 @@ function make_easy_table(player_id){
 		} else{
 
 		    var cell = "<td class='top'>";
-		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', colours[j]);
+		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', colours[colours.length - j -1]);
 		    cell += "</td>";
 		} 
 	    } else if (j == -1){
@@ -92,7 +92,7 @@ function make_medium_table(player_id){
 		    cell = '<td></td>';
 		}else {
 		    cell = '<td>';
-		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', colours[j]);
+		    cell += "<img width='32' src='images/image_source.png' alt=image_source'>".replaceAll('image_source', colours[colours.length - j -1]);
 		    cell +="</td>";
 		}
 	    }else if (j == -1){
@@ -115,8 +115,8 @@ function make_hard_table(player_id){
     //the hard table is actually easier to make since we use exactly the same approach as the easy table, only that before it we merge the two arrays into one
         //there is an empty row at the top of the table.
     var out = "<tbody>";
-    var rows = shapes.concat(colours);
-    var columns = colours.concat(shapes);
+    var rows = colours.concat(shapes);
+    var columns = rows.reverse();
     for (let i = -1; i < rows.length;i++){
 	out += "<tr>";
 	for (let j = -1; j < columns.length; j++){
