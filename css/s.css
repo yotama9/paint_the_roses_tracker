@@ -15,16 +15,16 @@ td {
 	border-width: 3px;
 }
 td.top{
-	border-color:#3f8c59;
+	border-color:#ad8760;
 	border-bottom-style: solid;
 }
 
 td.left{
-	border-color:#3f8c59;
+	border-color:#ad8760;
 	border-right-style: solid;
 }
 td.used {
-	border-color:#3f8c59;
+	border-color:#ad8760;
 	border-top-style: solid;
 	border-bottom-style: solid;
 	border-left-style:solid;
