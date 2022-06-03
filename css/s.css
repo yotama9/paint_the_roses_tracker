@@ -7,6 +7,7 @@ div {
     padding-bottom: 10px;
 }
 
+
 input,select,button {
     border-radius: 25px;
 }
@@ -37,10 +38,21 @@ img.mark{
 	width:22px;
 }
 
+span.button{
+    background:#4d3871;
+    color:white;
+    padding: 5px;
+}
+
 span.hspace{
     padding-left:22px;
 }
 
 span.vspace{
     padding-bottom:22px;
+}
+
+.polygon{
+    fill:white;
+    color:black;
 }

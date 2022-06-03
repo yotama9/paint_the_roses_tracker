@@ -10,6 +10,7 @@
 <body>
 
   <h2>Welcome to my  unofficial paint the roses tracker</h2>
+  <span id="disclaimers">
   <h3>Disclaimers</h3>
   <div>
     This is a tracker I've developed for the game after noticing how fast the paper tracker are consumed. It should be fairly easy to use. 
@@ -20,7 +21,7 @@
   </div>
 
   <div>
-    This is an open srouce page, developed and share under GPL license terms. Found an error? Want to add/propose changes? Please go to the <a target="_blank" href="https://github.com/yotama9/ptrt">github page</a>.
+    This is an open srouce page, (still) developed and share under GPL license terms. Found an error? Want to add/propose changes? Please go to the <a target="_blank" href="https://github.com/yotama9/ptrt">github page</a>.
   </div>
 
   <div>
@@ -30,9 +31,18 @@
   <div>
     All icons in this page are taken from <a target="_blank" href="https://flaticons.net">Flaticons</a>. As per the disclaimer on their page, they are royalty free.
   </div>
+  </span>
+  <span class="button" id="hide_disclaimers" onclick="hide_disclaimers()">Hide disclaimers</span>
+  <span class="button" id="show_disclaimers" onclick="show_disclaimers()">Show disclaimers</span>
 
+  <div id="placement_tracker">
+    Turn number: <span id="turn_number">0</span>
+    <svg id="canvas" width="400" height="200">
+    </svg>
+  </div>
   
 
+  
   <hr>
   How many players are there in your game?: <input type="number" step="1" value="2" min="2" max="5" id="num_players"></input>
     

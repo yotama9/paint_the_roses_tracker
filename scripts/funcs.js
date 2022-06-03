@@ -4,9 +4,98 @@ var max_num_players = 5;
 var colours = ['red','yellow','purple','pink'];
 var shapes = ['club','diamond','heart','spade'];
 var levels = ['easy','medium','hard'];
+var hex_radius = 20;
+var hex_padding = 0;
+var hex_rows = 6;
+
+
+
 
 
 club_url = 'https://flaticons.net/custom.php?i=YNPgczyT05DMwibIVIeIxbhpeqkyI7'
+
+function hide_disclaimers(){
+    $("#disclaimers").hide(100);
+    $("#hide_disclaimers").hide();
+    $("#show_disclaimers").show();
+
+}
+
+
+
+function calc_hex(i,j){
+    var R = hex_radius;
+    var pad = hex_padding;
+    var sin60 = Math.sqrt(3)/2
+    var r = R*sin60;
+
+    x0 = R+i*R*1.1;
+    y0 = R+j*2*R;
+
+    var out = (x0 - r) + "," + (y0 - R/2); //a
+    out = out + " " + x0 + "," + (y0 - R);//b
+    out = out + " " + (x0 + r) + "," + (y0 - R/2);//c
+    out = out + " " + (x0 + r) + "," + (y0 + R/2);//d
+    out = out + " " + x0 + "," + (y0 + R);//e
+    out = out + " " + (x0 - r) + "," + (y0 + R/2);//f
+    out = out + " " + (x0 - r) + "," + (y0 - R/2); //a
+    return out
+}
+
+function paint_tracker(){
+    var out = "";
+    var polygons = [];
+    var xy = [];
+
+    var R = hex_radius;
+
+    for (let i = 0; i <= 10; i++){
+	for (let j = -2; j <= 2; j++){
+	    if (i % 10 == 0 && j != 0){
+		continue;
+	    }
+	    if (i % 2 == 0 && j%2 != 0){
+		continue;
+	    }
+	    if (i%2 !=0 && j%2 == 0){
+		continue;
+	    }
+	    var x0 = R+i*R*1.1;
+	    var y0 = 1.2*R+(j+2)*2*R;
+	    polygons.push(calc_hex(i,j+2));
+	    xy.push ([x0,y0])
+	}
+    }
+
+    for (let i = 0; i < polygons.length; i++){
+	out = out + "<text played='false' text-anchor='middle' class='.hex' id='hex_label_"+i;
+	out = out + "' x='" + xy[i][0];
+	out = out + "' y='"+ xy[i][1] +"' fill='red'></text>";
+	out = out + "<polygon target='hex_label_" + i ;
+	out = out + "' class='hex' style='fill:#ffffff00;stroke:purple;' points='" + polygons[i];
+	out = out + "'></polygon>";
+
+    }
+    $("#canvas").html(out);
+
+    $(".hex").on("click", function(){
+	var target = $(this).attr("target");
+	played = document.getElementById(target).getAttribute("played");
+	if (played == 'false'){
+	    var turn = $("#turn_number").text();
+	    turn = parseInt(turn) + 1;
+	    $("#turn_number").text(turn);
+	    document.getElementById(target).textContent = turn;
+	    document.getElementById(target).setAttribute("played","true");
+	}
+    })
+}
+
+function show_disclaimers(){
+    $("#disclaimers").show(100);
+    $("#show_disclaimers").hide();
+    $("#hide_disclaimers").show();
+}
 
 function show_tables(n){
 	for (let i = 1; i <= max_num_players; i++){
@@ -215,13 +304,15 @@ function make_tables(){
 }
 
 $(document).ready(function(){
-	var num_players = parseInt($("#num_players").val());
+    var num_players = parseInt($("#num_players").val());
 
-	$("#num_players").on("change", function(){
-		var num_players = parseInt($(this).val());
-		show_tables(num_players);
-	});
+    $("#num_players").on("change", function(){
+	    var num_players = parseInt($(this).val());
+	    show_tables(num_players);
+    });
 
-	make_tables();
-	show_tables(num_players);
+    make_tables();
+    show_tables(num_players);
+    paint_tracker();
+    show_disclaimers();
 });
